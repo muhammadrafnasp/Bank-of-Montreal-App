@@ -1,0 +1,15 @@
+<div class="bank">
+    <img src="../../assets/image/pngtree-vector-bank-icon-png-image_515245.jpg" alt="bank" height="50px" width="50px" style="border-radius: 50%;">
+    <h1>My Bank</h1>
+    <h6>{{aim}}</h6>
+    <form action="#">
+    <input #acno type="text" [placeholder]="  account" id="login_acno">
+    <input #pswd type="password" placeholder="  Password" id="login_pswd">
+    <div class="recover">
+        <a href="#">Forgot Password?</a>
+    </div>
+    </form>
+    <button (click)="login(acno,pswd)">Login</button>
+    
+    <div class="member"><a href="./signup.html">Sign Up</a></div>
+</div>
