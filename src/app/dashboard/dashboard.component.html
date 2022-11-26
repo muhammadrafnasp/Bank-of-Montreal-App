@@ -1,0 +1,49 @@
+<div class="parent">
+    <div><h1>Welcome {{user}}</h1>
+        <a routerLink="/transaction">Transaction History</a>
+    </div>
+    <div class="child">
+        <div class="bank">
+            <img src="../../assets/image/pngtree-vector-bank-icon-png-image_515245.jpg" alt="bank" height="50px" width="50px" style="border-radius: 50%;">
+            <h1>Deposit</h1>
+            <form action="#">
+            <input [(ngModel)]="acno" type="text" name="Account number" placeholder= " Account number" id="depo_acno">
+            <input [(ngModel)]="pswd" type="password" name="password" placeholder="  Password" id="depo_pswd">
+            <input [(ngModel)]="amount" type="text" name="userName" placeholder="  Amount" id="depo_amount">
+
+            </form>
+            <div class="terms">
+               
+                <input type="checkbox" id="checked1" value="checked1" >
+                <label for="checkbox">I agree to these <a href="#">Terms & Conditions</a></label>
+            
+            </div>
+            <button (click)="deposit() " type="submit" value="submit">Deposit</button>
+        
+           <!-- <div class="member">Already a member? <a routerLink="">Sign in</a></div> -->
+        </div>  
+        
+    </div>
+    <div class="child">
+        <div class="bank">
+            <img src="../../assets/image/pngtree-vector-bank-icon-png-image_515245.jpg" alt="bank" height="50px" width="50px" style="border-radius: 50%;">
+            <h1>Withdraw</h1>
+            <form action="#">
+            <input [(ngModel)]="acno1" type="text" name="Account number" placeholder= " Account number" id="with_acno">
+            <input [(ngModel)]="pswd1" type="password" name="password" placeholder="  Password" id="with_pswd">
+            <input [(ngModel)]="amount1" type="text" name="userName" placeholder="  Amount" id="with_amount">
+
+            </form>
+            <div class="terms">
+               
+                <input type="checkbox" id="checked1" value="checked1" >
+                <label for="checkbox">I agree to these <a href="#">Terms & Conditions</a></label>
+            
+            </div>
+            <button (click)="withdraw() " type="submit" value="submit">Withdraw</button>
+        
+           <!-- <div class="member">Already a member? <a routerLink="">Sign in</a></div> -->
+        </div>  
+
+    </div>
+</div>

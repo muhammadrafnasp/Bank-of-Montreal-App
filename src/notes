@@ -16,7 +16,7 @@ Basic commands
 
                                   Basic Concept
 
-Data binding - share data btw components
+1)Data binding - share data btw components
 
 ts->component
 html->View
@@ -36,3 +36,41 @@ html->View
   c)event binding using template referencing variable - #variable_name
 
   2)two way data binding - data sharing both direction(ts->html html->ts)
+
+  1.1)ndModel binding - import formsModule in app.module.ts
+
+  [(ngModel)]="property_name"
+
+
+
+
+2)Angular Routing
+
+To set path for component 
+
+
+{
+   path:value,component:component_name
+},
+
+login
+{
+   path:'',component:LoginComponent
+},
+  
+
+3)Angular services
+
+
+to hold redundant data
+
+to create new services - ng g s service_name
+
+4)dependancy injection
+
+to share data btw two dependend classes
+
+constructor(private ds:DataService)
+
+
+

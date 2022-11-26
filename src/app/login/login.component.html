@@ -3,13 +3,19 @@
     <h1>My Bank</h1>
     <h6>{{aim}}</h6>
     <form action="#">
-    <input #acno type="text" [placeholder]="  account" id="login_acno">
-    <input #pswd type="password" placeholder="  Password" id="login_pswd">
+    <input [(ngModel)]="acno" type="text" name="account number" [placeholder]="  account" id="login_acno">
+    <input [(ngModel)]="pswd" type="password" name="password" placeholder="  Password" id="login_pswd">
     <div class="recover">
         <a href="#">Forgot Password?</a>
     </div>
     </form>
-    <button (click)="login(acno,pswd)">Login</button>
+    <button (click)="login()">Login</button>
     
-    <div class="member"><a href="./signup.html">Sign Up</a></div>
+    <div class="member"><a routerLink="register">Sign Up</a></div>
 </div>
+
+
+
+
+
+
