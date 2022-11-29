@@ -12,7 +12,9 @@ export class DataService {
 
   currentUser = '';
 
-    
+  // current account number
+  currentAcno ='';
+
   //database
 
 userDetails:any = {
@@ -49,6 +51,7 @@ login(acno:any,pswd:any){
   if(acno in userDetails){
     if(pswd == userDetails[acno]['password']){
       this.currentUser=userDetails[acno]['username']
+      this.currentAcno=acno;
       return true;
     }
     else{
@@ -99,6 +102,11 @@ withdraw(acno:any,pswd:any,amt:any){
     if(pswd == userDetails[acno]['password']){
       if(userDetails[acno]['balance']>amount){
         userDetails[acno]['balance']-=amount;
+        userDetails[acno]['transaction'].push({
+          Type:'Debit',
+          Amount:amount
+        })
+  
         return userDetails[acno]['balance']
 
       }
@@ -121,5 +129,10 @@ else{
 }
 
 }
+
+getTransaction(acno:any){
+ return this.userDetails[acno]['transaction'] //details of transaction
+}
+
 
 }

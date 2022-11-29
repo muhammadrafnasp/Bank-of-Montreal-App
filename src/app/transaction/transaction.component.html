@@ -9,14 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Credit</td>
-            <td>1000</td>
-        </tr>
-        <tr>
-            <td>Debit</td>
-            <td>1000</td>
+        <tr *ngFor="let t of transaction">
+        <td>{{t.Type}}</td>
+            <td>{{t.Amount}}</td>
         </tr>
 
     </tbody>
 </table>
+<a routerLink="/dashboard">Back To Dashboard</a>

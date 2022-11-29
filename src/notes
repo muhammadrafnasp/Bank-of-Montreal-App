@@ -72,5 +72,20 @@ to share data btw two dependend classes
 
 constructor(private ds:DataService)
 
+5)Angular Directives -To manipulate DOM
+
+a)component directives(array)
+
+b)structural directives(table)
+ ->*ngFor
+
+ 6)Angular Forms
+ a)Template driven Forms(first design html template)
+ b)Model driven Forms(first design model in ts file)
+
+ 1)Reactive Forms
+ formGroup,array,control
+ for advanced validation
+ import from Reactive Forms Module(in app.module.ts)
 
 
