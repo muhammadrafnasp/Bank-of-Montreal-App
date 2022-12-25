@@ -78,6 +78,7 @@ a)component directives(array)
 
 b)structural directives(table)
  ->*ngFor
+ ->*ngIf
 
  6)Angular Forms
  a)Template driven Forms(first design html template)
@@ -88,4 +89,17 @@ b)structural directives(table)
  for advanced validation
  import from Reactive Forms Module(in app.module.ts)
 
+7)local storage
+ -setItem - to store data in local storage
+ -getItem - to get data from local storage
+ -removeItem - to remove data from local storage
 
+ 8)Parent child communication
+
+ parent -> child communication
+ child -> parent communication
+
+ eg:
+ dashboard -> parent
+ delete -> child
+ 

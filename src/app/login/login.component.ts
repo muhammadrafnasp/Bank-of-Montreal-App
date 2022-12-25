@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -23,10 +24,17 @@ export class LoginComponent implements OnInit { //(3rd execute)
   //properties/varaiables
   //function/methods -> user defined functions //(4th execute)
   //dependency injection
-  constructor(private ds:DataService,private router:Router) {  //(1st execute)
+  constructor(private fb:FormBuilder, private ds:DataService,private router:Router) {  //(1st execute)
     //it automatically invokes when the object is created
     //object initialization
    }
+
+  //  loginForm model
+  loginForm = this.fb.group({ //group
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
+    pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]  
+      
+  })
 
   ngOnInit(): void { //(2nd execute)
 
@@ -51,48 +59,28 @@ export class LoginComponent implements OnInit { //(3rd execute)
   }
 
   login(){
-    // alert("you clicked login")
-    var acno = this.acno
-    var pswd = this.pswd
-    var userDetails = this.ds.userDetails
-    const result = this.ds.login(acno,pswd);
 
+    console.log(this.loginForm);
+    // alert("you clicked login")    
+  
+    var acno = this.loginForm.value.acno
+    var pswd = this.loginForm.value.pswd
+    // var userDetails = this.ds.userDetails
 
-
-    if(result){
-
-      alert('login succsseful')
+    if(this.loginForm.valid){
+    this.ds.login(acno,pswd)
+    .subscribe((result:any)=>{
+      localStorage.setItem('currentUser',JSON.stringify(result.currentUser));
+      localStorage.setItem('currentAcno',JSON.stringify(result.currentAcno));
+      localStorage.setItem('token',JSON.stringify(result.token));
+      alert(result.message);
       this.router.navigateByUrl('dashboard')
-
-
-    }
-    else{
-      alert('Login failed')
-    }
+    },
+    result=>{
+     alert(result.error.message)
+    })
 
   }
-
-
-
-  // login(a:any,p:any){
-  //   // alert("you clicked login")
-  //   var acno = a.value
-  //   var pswd = p.value
-  //   var userDetails = this.userDetails
-
-
-  //   if(acno in userDetails){
-  //     if(pswd == userDetails[acno]['password']){
-  //       alert('login succsseful')
-  //     }
-  //     else{
-  //       alert('inavalid password')
-  //     }
-  //   }
-  //   else{
-  //     alert('invalid username')
-  //   }
-
-  // }
+}
 
 }
