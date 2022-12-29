@@ -18,7 +18,7 @@ acno="";
 
 // registartion model
 registerForm = this.fb.group({ //group
-  uname:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
+  uname:['',[Validators.required,Validators.pattern('[a-z A-Z]*')]],
   acno:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
   pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
 })
@@ -34,19 +34,19 @@ registerForm = this.fb.group({ //group
 
     var uname=this.registerForm.value.uname;
     var acno=this.registerForm.value.acno;
-    var pswd=this.registerForm.value.pswd;
+    var password=this.registerForm.value.pswd;
     if(this.registerForm.valid){
 
     
     console.log(this.registerForm.get('uname')?.errors); //valid or not
-    this.ds.register(acno,uname,pswd)
+    this.ds.register(acno,uname,password)
     .subscribe((result:any)=>{
       alert(result.message);
       this.router.navigateByUrl('')
     })
   }
     else{
-      ('Invalid form')
+      alert('Invalid form');
 
     }
 

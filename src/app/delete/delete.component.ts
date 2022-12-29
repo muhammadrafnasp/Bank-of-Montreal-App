@@ -6,10 +6,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./delete.component.css']
 })
 export class DeleteComponent implements OnInit {
+   // @input() used to hold data from the parent component
   @Input () item:string|undefined;
-  // @input() used to hold data from the parent component
 
 @Output() onCancel = new EventEmitter();
+
+@Output() onDelete = new EventEmitter();
+
+
 // Oncancel - userDefined event 
   constructor() { }
 
@@ -17,6 +21,11 @@ export class DeleteComponent implements OnInit {
   }
   cancel(){
     this.onCancel.emit();
+  }
+
+  delete(){
+    this.onDelete.emit(this.item);
+
   }
 
 }

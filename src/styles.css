@@ -9,7 +9,10 @@
 
 }
 body{
-    background: #dfe9f5;
+    /* background: #dfe9f5; */
+    background-image: url('https://i.postimg.cc/fR36zYF6/62174200-euro-money-banknotes-money-euro-background.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .bank{

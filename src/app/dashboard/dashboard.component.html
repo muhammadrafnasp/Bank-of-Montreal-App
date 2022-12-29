@@ -7,7 +7,7 @@
         <a routerLink="/transaction" style="text-decoration: none;">Transaction History</a>
     </div>
     <h4>System Date and time : {{sdate | date : 'short'}}</h4>
-    <app-delete [item]="acno" (onCancel)="onCancel()"></app-delete>
+    <app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)"></app-delete>
     
     <div class="child" [ngClass]="acno? 'style1':''">
         <div class="bank">
@@ -42,14 +42,14 @@
             <img src="../../assets/image/pngtree-vector-bank-icon-png-image_515245.jpg" alt="bank" height="50px" width="50px" style="border-radius: 50%;">
             <h1>Withdraw</h1>
             <form action="#" [formGroup]="withdrawForm">
-            <input formControlName="acno1" type="text" name="Account number" placeholder="Account number" id="with_acno">
-            <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" style="color: red;">Invalid Account number</div>
+            <input formControlName="acno" type="text" name="Account number" placeholder="Account number" id="with_acno">
+            <div *ngIf="this.withdrawForm.get('acno')?.errors && this.withdrawForm.get('acno')?.touched" style="color: red;">Invalid Account number</div>
 
-            <input formControlName="pswd1" type="password" name="password" placeholder="Password" id="with_pswd">
-            <div *ngIf="this.withdrawForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched" style="color: red;">Invalid Password</div>
+            <input formControlName="pswd" type="password" name="password" placeholder="Password" id="with_pswd">
+            <div *ngIf="this.withdrawForm.get('pswd')?.errors && this.withdrawForm.get('pswd')?.touched" style="color: red;">Invalid Password</div>
 
-            <input formControlName="amount1" type="text" name="userName" placeholder="Amount" id="with_amount">
-            <div *ngIf="this.withdrawForm.get('amount1')?.errors && this.withdrawForm.get('amount1')?.touched" style="color: red;">Invalid Amount</div>
+            <input formControlName="amount" type="text" name="userName" placeholder="Amount" id="with_amount">
+            <div *ngIf="this.withdrawForm.get('amount')?.errors && this.withdrawForm.get('amount')?.touched" style="color: red;">Invalid Amount</div>
 
 
             </form>

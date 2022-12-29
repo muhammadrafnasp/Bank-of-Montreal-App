@@ -1,5 +1,11 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+//global http header object
+
+const options={
+  headers: new HttpHeaders()
+} 
 
 @Injectable({
   providedIn: 'root'
@@ -123,7 +129,15 @@ login(acno:any,pswd:any){
 
 
 getToken(){
+   //fetch token from local storage
+   const token = JSON.parse(localStorage.getItem('token')||'')
+   //append token header
+   let headers = new HttpHeaders()
 
+   if(token){
+    options.headers = headers.append('x-access-token',token)
+   }
+   return options//to get token
 }
 
 
@@ -134,7 +148,7 @@ deposit(acno:any,pswd:any,amt:any){
     pswd,
     amount:amt
    }
-   return this.http.post('http://localhost:3000/deposit',data)
+   return this.http.post('http://localhost:3000/deposit',data,this.getToken())
 
 
 
@@ -167,44 +181,68 @@ deposit(acno:any,pswd:any,amt:any){
 
 withdraw(acno:any,pswd:any,amt:any){
 
-  let amount = parseInt(amt)
-  let userDetails = this.userDetails;
+
+
+
+  const data = {
+    acno,
+    pswd,
+    amount:amt
+   }
+   return this.http.post('http://localhost:3000/withdraw',data,this.getToken())
+
+
+//   let amount = parseInt(amt)
+//   let userDetails = this.userDetails;
   
-  if(acno in userDetails){
-    if(pswd == userDetails[acno]['password']){
-      if(userDetails[acno]['balance']>amount){
-        userDetails[acno]['balance']-=amount;
-        userDetails[acno]['transaction'].push({
-          Type:'Debit',
-          Amount:amount
-        })
+//   if(acno in userDetails){
+//     if(pswd == userDetails[acno]['password']){
+//       if(userDetails[acno]['balance']>amount){
+//         userDetails[acno]['balance']-=amount;
+//         userDetails[acno]['transaction'].push({
+//           Type:'Debit',
+//           Amount:amount
+//         })
 
-        this.saveDetails()
-        return userDetails[acno]['balance']
+//         this.saveDetails()
+//         return userDetails[acno]['balance']
 
-      }
+//       }
 
-      else{
-        alert('Transaction failed')
-        return false;
-      }
+//       else{
+//         alert('Transaction failed')
+//         return false;
+//       }
 
-    }
+//     }
 
-    else{
-      alert('password mis match')
-    }
+//     else{
+//       alert('password mis match')
+//     }
 
-}
-else{
-  alert('Invalid data');
-  return false;
-}
+// }
+// else{
+//   alert('Invalid data');
+//   return false;
+// }
 
-}
+// }
+
+  }
 
 getTransaction(acno:any){
- return this.userDetails[acno]['transaction'] //details of transaction
+  const data = {
+    acno
+   }
+   return this.http.post('http://localhost:3000/transaction',data,this.getToken())
+}
+
+
+//delete
+
+deleteAcc(acno:any){
+  return this.http.delete('http://localhost:3000/deleteAcc/'+acno)
+
 }
 
 

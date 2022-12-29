@@ -13,7 +13,12 @@ export class DashboardComponent implements OnInit {
   user = '';
 
   constructor(private fb:FormBuilder, private ds:DataService, private router:Router) {
-    this.user=this.ds.currentUser,this.sdate=new Date();
+    // this.user=this.ds.currentUser,
+    if(localStorage.getItem('currentUser')){
+      this.user=JSON.parse(localStorage.getItem('currentUser')||'');
+
+    }
+    this.sdate=new Date();
    }
 
 
@@ -41,21 +46,21 @@ depositForm = this.fb.group({
 // withdrawForm model
 
 withdrawForm = this.fb.group({
-  acno1:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
-  pswd1:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
-  amount1:['',[Validators.required,Validators.pattern('[0-9]*')]]
+  acno:['',[Validators.required,Validators.pattern('[0-9]*')]],//array
+  pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+  amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
 
 
 })
 
 
   ngOnInit(): void {
-    // if(!localStorage.getItem('currentAcno')){
-    //   alert('Please login first');
-    //   this.router.navigateByUrl('');
-    // }
-    this.user=JSON.parse(localStorage.getItem('currentUser')||'');
-    console.log(this.user);
+    if(!localStorage.getItem('currentUser')){
+      alert('Please login first');
+      this.router.navigateByUrl('');
+    }
+
+    // console.log(this.user);
     
   }
 
@@ -86,19 +91,22 @@ withdrawForm = this.fb.group({
     console.log(this.withdrawForm);
     
     // alert('clicked');
-    let acno = this.withdrawForm.value.acno1;
-    let pswd = this.withdrawForm.value.pswd1;
-    let amount = this.withdrawForm.value.amount1;
+    let acno = this.withdrawForm.value.acno;
+    let pswd = this.withdrawForm.value.pswd;
+    let amount = this.withdrawForm.value.amount;
     
     if(this.withdrawForm.valid){
-    const result = this.ds.withdraw(acno,pswd,amount)
-
-    if(result){
-      alert(`${amount} is debited...available balance is ${result}`)
-    }
-  }else{
-    alert('Invalid form')
-  }
+      this.ds.withdraw(acno,pswd,amount)
+    
+      .subscribe((result:any)=>{
+        alert(result.message)
+    
+      },
+      result=>{
+        alert(result.error.message)
+      })
+    
+      }
 
   }
 
@@ -108,6 +116,7 @@ withdrawForm = this.fb.group({
   // remove currentAcno and currentUser from localStorage
   localStorage.removeItem('currentAcno');
   localStorage.removeItem('currentUser');
+  localStorage.removeItem('token');
   this.router.navigateByUrl('');
   }
 
@@ -118,6 +127,19 @@ delete(){
 
 onCancel(){
   this.acno="";
+}
+
+onDelete(event:any){
+  //  alert(event) //1000
+  this.ds.deleteAcc(event)
+  .subscribe((result:any)=>{
+    alert(result.message)
+    // this.router.navigateByUrl('');
+    this.logout();
+  },
+  result=>{
+    alert(result.error.message)
+  })
 }
 
 }
