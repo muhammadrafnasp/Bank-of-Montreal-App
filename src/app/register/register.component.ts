@@ -43,31 +43,13 @@ registerForm = this.fb.group({ //group
     .subscribe((result:any)=>{
       alert(result.message);
       this.router.navigateByUrl('')
-    })
+  
+  },
+    result=>{
+      alert(result.error.message);
+  })
   }
-    else{
-      alert('Invalid form');
-
-    }
-
   }
-
 }
 
-
-
-    
-
-  //   if(result){
-  //     alert('register successful');
-  //     this.router.navigateByUrl('')
-  //   }
-  //   else{
-  //     alert('user already registered');
-  //     this.router.navigateByUrl('register')
-  //   }
- 
-  // }else{
-  //   alert('Invalid form');
-  // }
 
