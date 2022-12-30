@@ -7,9 +7,7 @@
     font-family: 'Poppins', sans-serif;
 
 }
-body{
-    background: #dfe9f5;
-}
+
 
 .bank{
     width: 350px;
@@ -20,6 +18,7 @@ body{
     text-align: center;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+
 }
 
 h1{
