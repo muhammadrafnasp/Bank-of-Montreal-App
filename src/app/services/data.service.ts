@@ -151,12 +151,4 @@ deleteAcc(acno:any){
 
 
 
-// sigosoft
-// mozanta technologies
-// panapps
-// DRxTx
-// evero consulting services india
-// tandemloop
-// ikure techsoft
-// claysys technologies
-// beinex
+
