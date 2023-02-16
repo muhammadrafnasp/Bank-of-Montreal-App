@@ -133,7 +133,7 @@ onDelete(event:any){
   //  alert(event) //1000
   this.ds.deleteAcc(event)
   .subscribe((result:any)=>{
-    alert(result.message)
+    alert(result.message) //user deleted
     // this.router.navigateByUrl('');
     this.logout();
   },

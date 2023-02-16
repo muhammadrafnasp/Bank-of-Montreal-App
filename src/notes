@@ -1,6 +1,8 @@
                                   ANGULAR
 
 
+
+
  Basic Building blocks
 
 1)Module - to import 3rd party modules (root module -app.module.ts)
@@ -96,10 +98,43 @@ b)structural directives(table)
 
  8)Parent child communication
 
- parent -> child communication
- child -> parent communication
+ parent -> child communication - @Input()
+ child -> parent communication - @Output()
 
  eg:
  dashboard -> parent
  delete -> child
- 
+
+
+ 9)Angular Pipes
+
+
+
+ 10)Frontend and Backend Connection (Integration)
+      HttpClientModule -
+      1)Import HttpClientModule in app.module.ts
+      2)Inject HttpClientModule in dataservice
+      3)using HttpClient to make API calls
+
+
+ 11)Asynchronous call - RxJs -
+  RxJs - Reactive extension for Javascript
+
+             TS                                    JS  
+           OBSERVABLE                           PROMISE
+ 1)Resolve  - subscribe()                          .then()
+ 2)Reject   - catch                                 catch
+
+
+
+
+ **To build A folder (it is used to minimise the project or folder size)
+   
+   -for eg:-go inside the bank app folder then open the cmd
+   then enter :- ng build
+   -then inside the bank app folder you you can also see a folder named dist 
+   -open dist -> bank app -> open cmd then install http server for run the code 
+   
+   - npm i -g htttp-server ,then type
+
+   - http-server - to get a path (there always display two path you can select any one.Then paste the path to backend index.js file)

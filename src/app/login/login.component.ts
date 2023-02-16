@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit { //(3rd execute)
   //properties/varaiables
   //function/methods -> user defined functions //(4th execute)
   //dependency injection
-  constructor(private fb:FormBuilder, private ds:DataService,private router:Router) {  //(1st execute)
+  constructor(private fb:FormBuilder, private ds:DataService,private router:Router) {   //(1st execute)
     //it automatically invokes when the object is created
     //object initialization
    }

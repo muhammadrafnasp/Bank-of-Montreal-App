@@ -9,7 +9,7 @@ export class DeleteComponent implements OnInit {
    // @input() used to hold data from the parent component
   @Input () item:string|undefined;
 
-@Output() onCancel = new EventEmitter();
+@Output() onCancel = new EventEmitter(); //to generate an event
 
 @Output() onDelete = new EventEmitter();
 

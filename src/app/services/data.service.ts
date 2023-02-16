@@ -80,7 +80,7 @@ register(acno:any,username:any,password:any){
 }
 
 
-
+// login call
 login(acno:any,pswd:any){
 
   const data = {
@@ -95,8 +95,10 @@ login(acno:any,pswd:any){
 getToken(){
    //fetch token from local storage
    const token = JSON.parse(localStorage.getItem('token')||'')
-   //append token header
+   //generate header
    let headers = new HttpHeaders()
+
+   //append token inside the header
 
    if(token){
     options.headers = headers.append('x-access-token',token)
@@ -104,7 +106,7 @@ getToken(){
    return options//to get token
 }
 
-
+// deposit call
 deposit(acno:any,pswd:any,amt:any){
 
   const data = {

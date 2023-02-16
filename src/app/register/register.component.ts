@@ -30,7 +30,7 @@ registerForm = this.fb.group({ //group
   register(){
     console.log(this.registerForm);
     
-    // alert("register clicked")
+    // alert("register clicked")  
 
     var uname=this.registerForm.value.uname;
     var acno=this.registerForm.value.acno;

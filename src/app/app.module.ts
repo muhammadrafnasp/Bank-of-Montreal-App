@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     DashboardComponent,
     TransactionComponent,
-    DeleteComponent
+    DeleteComponent,
   ],
   imports: [
     BrowserModule,
